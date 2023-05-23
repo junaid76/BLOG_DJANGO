@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blog</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header>
+    <h1>My Blog</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Latest Posts</h2>
+      {% for post in posts reversed %}
+      
+      <article>
+        <a href="/post/{{post.id}}">
+          <h1>{{post.title}}</h1>
+          <p>{{post.body|truncatewords:20}}</p>
+          <h4 >{{post.createdAt}}</h4>
+        </a>
+       
+        
+        
+        
+      </article>
+
+      {% endfor %}
+    </section>
+
+    <aside>
+      <h2>About Me</h2>
+      <img src="profile.jpg" alt="Profile Picture">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat nisi in lacus ultrices, sed tincidunt elit porta.</p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 My Blog. All rights reserved.</p>
+  </footer>
+</body>
+</html>
